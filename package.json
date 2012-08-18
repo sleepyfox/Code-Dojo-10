@@ -1,0 +1,29 @@
+{
+  "name": "10-code-dojo-Jun",
+  "version": "0.1.0",
+  "description": "The Tic-Tac-Toe kata from the London Code Dojo in August 2012",
+  "main": "index.js",
+  "scripts": {
+    "test": "jasmine-node --verbose --coffee test-*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sleepyfox/Code-Dojo-10"
+  },
+  "keywords": [
+    "london",
+    "code",
+    "dojo",
+    "node.js",
+    "coffeescript",
+    "kata"
+  ],
+  "author": "@sleepyfox <sleepyfox@gmail.com>",
+  "license": "BSD",
+  "dependencies": {
+    "jasmine-node": "1.x.x"
+  },
+  "devDependencies": {
+    "coffee-script": "1.x.x"
+  }
+}
