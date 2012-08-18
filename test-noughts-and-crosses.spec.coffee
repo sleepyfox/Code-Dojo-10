@@ -1,8 +1,17 @@
 describe 'An empty board', ->
-  it 'should register as a draw', ->
-    EMPTY = null
-    board = ((EMPTY for row in [1..3]) for column in [1..3])
-    gameIsADraw = (board) ->
-      true
+  board = []
 
-    expect(gameIsADraw(board)).toBe true
+  beforeEach = ->
+    EMPTY = '_'
+    board = ((EMPTY for row in [1..3]) for column in [1..3])
+    
+  it 'should not register as a draw', ->
+    gameIsADraw = (board) ->
+      false
+    expect(gameIsADraw(board)).toBe false
+
+  it 'should not register as a win for X', ->
+    gameIsAWinForX = (board) ->
+      false
+    expect(gameIsAWinForX(board)).toBe false
+    
