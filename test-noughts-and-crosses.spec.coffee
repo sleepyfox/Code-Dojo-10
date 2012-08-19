@@ -24,6 +24,7 @@ describe 'A game that has no spaces and is without a line of three', ->
   it 'should register as finished', ->
     X = 'X'
     O = 'O'
+    EMPTY = '_'
     board = [ [X, O, X], [O, X, O], [O, X, O]]
     gameIsFinished = (board) ->
       # no square is empty
@@ -33,5 +34,5 @@ describe 'A game that has no spaces and is without a line of three', ->
           if board[row][column] is EMPTY
             finished = false
       return finished
+    expect(gameIsFinished(board)).toBe true
 
-    xit 'should register as a draw', ->
