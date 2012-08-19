@@ -19,3 +19,19 @@ describe 'An empty board', ->
     gameIsAWinForO = (board) ->
       false
     expect(gameIsAWinForO(board)).toBe false
+
+describe 'A game that has no spaces and is without a line of three', ->
+  it 'should register as finished', ->
+    X = 'X'
+    O = 'O'
+    board = [ [X, O, X], [O, X, O], [O, X, O]]
+    gameIsFinished = (board) ->
+      # no square is empty
+      finished = true
+      for row in [0..2]
+        for column in [0..2]
+          if board[row][column] is EMPTY
+            finished = false
+      return finished
+
+    xit 'should register as a draw', ->
