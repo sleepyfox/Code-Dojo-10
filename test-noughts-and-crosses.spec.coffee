@@ -14,4 +14,8 @@ describe 'An empty board', ->
     gameIsAWinForX = (board) ->
       false
     expect(gameIsAWinForX(board)).toBe false
-    
+
+  it 'should not register as a win for O', ->
+    gameIsAWinForO = (board) ->
+      false
+    expect(gameIsAWinForO(board)).toBe false
