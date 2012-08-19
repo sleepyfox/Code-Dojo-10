@@ -1,39 +1,52 @@
 NUM_ROWS = 3
 NUM_COLUMNS = 3
 EMPTY = '_'
+X = 'X'
+O = 'O'
+
+gameIsFinished = (board) ->
+  # no square is empty
+  for row in [0..NUM_ROWS - 1]
+    for column in [0..NUM_COLUMNS - 1]
+      if board[row][column] is EMPTY
+        return false
+  return true
+
+gameIsADraw = (board) ->
+  # at this point all finished games are draws
+  if (gameIsFinished(board) is true) &&
+     (gameIsAWinForO(board) is false) &&
+     (gameIsAWinForX(board) is false)
+    true
+  else
+    false
+
+# Placeholder functions
+gameIsAWinForX = (board) -> false
+gameIsAWinForO = (board) -> false
 
 describe 'An empty board', ->
-  board = []
+  board = [ [EMPTY, EMPTY, EMPTY], [EMPTY, EMPTY, EMPTY], [EMPTY, EMPTY, EMPTY] ]
 
-  beforeEach = ->
-    board = ((EMPTY for row in [1..3]) for column in [1..3])
-    
+  it 'should not register as finished', ->
+    expect(gameIsFinished(board)).toBe false
+
   it 'should not register as a draw', ->
-    gameIsADraw = (board) ->
-      false
     expect(gameIsADraw(board)).toBe false
 
   it 'should not register as a win for X', ->
-    gameIsAWinForX = (board) ->
-      false
     expect(gameIsAWinForX(board)).toBe false
 
   it 'should not register as a win for O', ->
-    gameIsAWinForO = (board) ->
-      false
     expect(gameIsAWinForO(board)).toBe false
 
 describe 'A game that has no spaces and is without a line of three', ->
+  board = [ [X, O, X], [O, X, O], [O, X, O] ]
+  
   it 'should register as finished', ->
-    X = 'X'
-    O = 'O'
-    board = [ [X, O, X], [O, X, O], [O, X, O] ]
-    gameIsFinished = (board) ->
-      # no square is empty
-      finished = true      
-      for row in [0..NUM_ROWS - 1]
-        for column in [0..NUM_COLUMNS - 1]
-          finished = finished && board[row][column] isnt EMPTY
-      return finished
     expect(gameIsFinished(board)).toBe true
+
+  it 'should register as a draw', ->
+    expect(gameIsADraw(board)).toBe true
+
 
