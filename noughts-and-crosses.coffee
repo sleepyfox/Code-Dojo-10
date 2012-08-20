@@ -26,6 +26,15 @@ class Game
     else
       false
 
+  lineOfThreeVertically: (player) ->
+    win = false
+    for column in [0..NUM_COLUMNS - 1]
+      if (@board[0][column] is player &&
+          @board[1][column] is player &&
+          @board[2][column] is player) 
+        win = true
+    return win
+
   isWinForO: -> 
     OWins = false
     # check each row for all noughts
@@ -36,11 +45,7 @@ class Game
         OWins = true
 
     # check columns for all noughts
-    for column in [0..NUM_ROWS - 1]
-      if (@board[0][column] is O &&
-          @board[1][column] is O &&
-          @board[2][column] is O) 
-        OWins = true
+    if (@lineOfThreeVertically(O)) then OWins = true
 
     # check both diagonals for all noughts
     if (@board[0][0] is O &&
@@ -65,12 +70,8 @@ class Game
         XWins = true
 
     # check columns for all crosses
-    for column in [0..NUM_ROWS - 1]
-      if (@board[0][column] is X &&
-          @board[1][column] is X &&
-          @board[2][column] is X) 
-        XWins = true
-        
+    if (@lineOfThreeVertically(X)) then XWins = true
+
     # check both diagonals for all crosses
     if (@board[0][0] is X &&
         @board[1][1] is X &&
