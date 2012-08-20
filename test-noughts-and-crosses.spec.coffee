@@ -4,49 +4,54 @@ EMPTY = '_'
 X = 'X'
 O = 'O'
 
-gameIsFinished = (board) ->
-  # no square is empty
-  for row in [0..NUM_ROWS - 1]
-    for column in [0..NUM_COLUMNS - 1]
-      if board[row][column] is EMPTY
-        return false
-  return true
+class Game 
+  constructor: (startingBoard) ->
+    # Default start is an empty board
+    @board = startingBoard ? [ [EMPTY, EMPTY, EMPTY], [EMPTY, EMPTY, EMPTY], [EMPTY, EMPTY, EMPTY] ]
 
-gameIsADraw = (board) ->
-  # at this point all finished games are draws
-  if (gameIsFinished(board) is true) &&
-     (gameIsAWinForO(board) is false) &&
-     (gameIsAWinForX(board) is false)
-    true
-  else
-    false
+  isFinished: ->
+    # no square is empty
+    for row in [0..NUM_ROWS - 1]
+      for column in [0..NUM_COLUMNS - 1]
+        if @board[row][column] is EMPTY
+          return false
+    return true
 
-# Placeholder functions
-gameIsAWinForX = (board) -> false
-gameIsAWinForO = (board) -> false
+  isDraw: ->
+    # at this point all finished games are draws
+    if (@isFinished() is true) &&
+       (@isWinForO() is false) &&
+       (@isWinForX() is false)
+      true
+    else
+      false
+
+  # Placeholder functions
+  isWinForX: -> false
+  isWinForO: -> false
 
 describe 'An empty board', ->
-  board = [ [EMPTY, EMPTY, EMPTY], [EMPTY, EMPTY, EMPTY], [EMPTY, EMPTY, EMPTY] ]
+  game = new Game
 
   it 'should not register as finished', ->
-    expect(gameIsFinished(board)).toBe false
+    expect(game.isFinished()).toBe false
 
   it 'should not register as a draw', ->
-    expect(gameIsADraw(board)).toBe false
+    expect(game.isDraw()).toBe false
 
   it 'should not register as a win for X', ->
-    expect(gameIsAWinForX(board)).toBe false
+    expect(game.isWinForX()).toBe false
 
   it 'should not register as a win for O', ->
-    expect(gameIsAWinForO(board)).toBe false
+    expect(game.isWinForO()).toBe false
 
-describe 'A game that has no spaces and is without a line of three', ->
-  board = [ [X, O, X], [O, X, O], [O, X, O] ]
-  
+describe 'A game that has no spaces and is without a line of three', -> 
+  game = new Game([ [X, O, X], [O, X, O], [O, X, O] ])
+
   it 'should register as finished', ->
-    expect(gameIsFinished(board)).toBe true
+    expect(game.isFinished()).toBe true
 
   it 'should register as a draw', ->
-    expect(gameIsADraw(board)).toBe true
+    expect(game.isDraw()).toBe true
 
 
