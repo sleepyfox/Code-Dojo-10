@@ -57,32 +57,21 @@ class Game
     return win
 
   isWinForO: -> 
-    OWins = false
-    # check each row for all noughts
-    if (@lineOfThreeHorizontally(O)) then OWins = true
-
-    # check columns for all noughts
-    if (@lineOfThreeVertically(O)) then OWins = true
-
-    # check both diagonals for all noughts
-    if (@lineOfThreeDiagonally(O)) then OWins = true
-
-    # return win bool
-    return OWins
+    if (@lineOfThreeHorizontally(O) ||
+        @lineOfThreeVertically(O) ||
+        @lineOfThreeDiagonally(O))
+      true
+    else
+      false
 
   isWinForX: -> 
-    XWins = false
-    # check each row for all crosses
-    if (@lineOfThreeHorizontally(X)) then XWins = true
+    if (@lineOfThreeHorizontally(X) ||
+        @lineOfThreeVertically(X) ||
+        @lineOfThreeDiagonally(X))
+      true
+    else
+      false
 
-    # check columns for all crosses
-    if (@lineOfThreeVertically(X)) then XWins = true
-
-    # check both diagonals for all crosses
-    if (@lineOfThreeDiagonally(X)) then XWins = true
-
-    # return win bool
-    return XWins
 
 exports.Game = Game
 exports.X = X
