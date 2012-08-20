@@ -18,7 +18,6 @@ class Game
     return true
 
   isDraw: ->
-    # at this point all finished games are draws
     if (@isFinished() is true) &&
        (@isWinForO() is false) &&
        (@isWinForX() is false)
@@ -56,22 +55,19 @@ class Game
       win = true
     return win
 
-  isWinForO: -> 
-    if (@lineOfThreeHorizontally(O) ||
-        @lineOfThreeVertically(O) ||
-        @lineOfThreeDiagonally(O))
+  isWinFor: (player) ->
+    if (@lineOfThreeHorizontally(player) ||
+        @lineOfThreeVertically(player) ||
+        @lineOfThreeDiagonally(player))
       true
     else
-      false
+      false 
+
+  isWinForO: -> 
+    @isWinFor O
 
   isWinForX: -> 
-    if (@lineOfThreeHorizontally(X) ||
-        @lineOfThreeVertically(X) ||
-        @lineOfThreeDiagonally(X))
-      true
-    else
-      false
-
+    @isWinFor X
 
 exports.Game = Game
 exports.X = X
