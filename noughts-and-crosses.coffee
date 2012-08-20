@@ -43,7 +43,9 @@ class Game
         OWins = true
 
     # check both diagonals for all noughts
-    # return win bool
+    # if (@board[0][0] is O &&
+    #     )
+    # # return win bool
     return OWins
 
   # Placeholder functions
