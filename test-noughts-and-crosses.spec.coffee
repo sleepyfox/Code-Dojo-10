@@ -85,3 +85,15 @@ describe 'A game that has an early horizontal line of three crosses', ->
   it 'should not register as a win for O', ->
     expect(game.isWinForO()).toBe false
 
+describe 'A game that has an early diagonal line of three crosses', ->
+  game = new Game([ [O, EMPTY, X], [O, X, O], [X, X, O] ])
+
+  it 'should not register as a draw', ->
+    expect(game.isDraw()).toBe false 
+
+  it 'should register as a win for X', ->
+    expect(game.isWinForX()).toBe true
+
+  it 'should not register as a win for O', ->
+    expect(game.isWinForO()).toBe false
+

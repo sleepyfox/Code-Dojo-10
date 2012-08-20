@@ -70,7 +70,16 @@ class Game
           @board[1][column] is X &&
           @board[2][column] is X) 
         XWins = true
+        
     # check both diagonals for all crosses
+    if (@board[0][0] is X &&
+        @board[1][1] is X &&
+        @board[2][2] is X)
+      XWins = true
+    if (@board[0][2] is X &&
+        @board[1][1] is X &&
+        @board[2][0] is X)
+      XWins = true
 
     # return win bool
     return XWins
