@@ -25,7 +25,7 @@ describe 'A game that has no spaces and is without a line of three', ->
   it 'should register as a draw', ->
     expect(game.isDraw()).toBe true
 
-describe 'A game that has an early line of three noughts', ->
+describe 'A game that has an early vertical line of three noughts', ->
   game = new Game([ [X, O, X], [X, O, EMPTY], [EMPTY, O, EMPTY] ])
 
   it 'should not register as a draw', ->
@@ -33,3 +33,6 @@ describe 'A game that has an early line of three noughts', ->
 
   it 'should not register as a win for X', ->
     expect(game.isWinForX()).toBe false
+
+  it 'should register as a win for O', ->
+    expect(game.isWinForO()).toBe true
