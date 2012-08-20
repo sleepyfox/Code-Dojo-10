@@ -35,14 +35,19 @@ class Game
         win = true
     return win
 
+  lineOfThreeHorizontally: (player) ->
+    win = false
+    for row in [0..NUM_ROWS - 1]
+      if (@board[row][0] is player &&
+          @board[row][1] is player &&
+          @board[row][2] is player) 
+        win = true
+    return win
+
   isWinForO: -> 
     OWins = false
     # check each row for all noughts
-    for row in [0..NUM_ROWS - 1]
-      if (@board[row][0] is O &&
-          @board[row][1] is O &&
-          @board[row][2] is O) 
-        OWins = true
+    if (@lineOfThreeHorizontally(O)) then OWins = true
 
     # check columns for all noughts
     if (@lineOfThreeVertically(O)) then OWins = true
@@ -63,11 +68,7 @@ class Game
   isWinForX: -> 
     XWins = false
     # check each row for all crosses
-    for row in [0..NUM_ROWS - 1]
-      if (@board[row][0] is X &&
-          @board[row][1] is X &&
-          @board[row][2] is X) 
-        XWins = true
+    if (@lineOfThreeHorizontally(X)) then XWins = true
 
     # check columns for all crosses
     if (@lineOfThreeVertically(X)) then XWins = true
