@@ -57,15 +57,20 @@ class Game
 
   isWinForX: -> 
     XWins = false
-    # check each row for all noughts
+    # check each row for all crosses
+    for row in [0..NUM_ROWS - 1]
+      if (@board[row][0] is X &&
+          @board[row][1] is X &&
+          @board[row][2] is X) 
+        XWins = true
 
-    # check columns for all noughts
+    # check columns for all crosses
     for column in [0..NUM_ROWS - 1]
       if (@board[0][column] is X &&
           @board[1][column] is X &&
           @board[2][column] is X) 
         XWins = true
-    # check both diagonals for all noughts
+    # check both diagonals for all crosses
 
     # return win bool
     return XWins
