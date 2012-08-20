@@ -51,12 +51,24 @@ class Game
         @board[1][1] is O &&
         @board[2][0] is O)
       OWins = true
-      
+
     # return win bool
     return OWins
 
-  # Placeholder functions
-  isWinForX: -> false
+  isWinForX: -> 
+    XWins = false
+    # check each row for all noughts
+
+    # check columns for all noughts
+    for column in [0..NUM_ROWS - 1]
+      if (@board[0][column] is X &&
+          @board[1][column] is X &&
+          @board[2][column] is X) 
+        XWins = true
+    # check both diagonals for all noughts
+
+    # return win bool
+    return XWins
 
 exports.Game = Game
 exports.X = X
