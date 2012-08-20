@@ -48,3 +48,15 @@ describe 'A game that has an early horizontal line of three noughts', ->
 
   it 'should register as a win for O', ->
     expect(game.isWinForO()).toBe true
+
+describe 'A game that has an early diagonal line of three noughts', ->
+  game = new Game([ [O, EMPTY, X], [X, O, EMPTY], [EMPTY, X, O] ])
+
+  it 'should not register as a draw', ->
+    expect(game.isDraw()).toBe false 
+
+  it 'should not register as a win for X', ->
+    expect(game.isWinForX()).toBe false
+
+  it 'should register as a win for O', ->
+    expect(game.isWinForO()).toBe true
