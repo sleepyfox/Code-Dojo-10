@@ -1,5 +1,6 @@
 nac = require('./noughts-and-crosses')
 [Game, X, O, EMPTY] = [nac.Game, nac.X, nac.O, nac.EMPTY]
+[NUM_ROWS, NUM_COLUMNS] = [nac.NUM_ROWS, nac.NUM_COLUMNS]
 
 describe 'An empty board', ->
   game = new Game
@@ -15,6 +16,14 @@ describe 'An empty board', ->
 
   it 'should not register as a win for O', ->
     expect(game.isWinForO()).toBe false
+
+  it 'should register any move by any player to be valid', ->
+    valid = true
+    for player in [X, O]
+      for row in [0..NUM_ROWS - 1]
+        for column in [0..NUM_COLUMNS - 1]
+          valid = valid && game.isValidMove player, row, column
+    expect(valid).toBe true
 
 describe 'A game that has no spaces and is without a line of three', -> 
   game = new Game([ [X, O, X], [O, X, O], [O, X, O] ])
@@ -96,4 +105,3 @@ describe 'A game that has an early diagonal line of three crosses', ->
 
   it 'should not register as a win for O', ->
     expect(game.isWinForO()).toBe false
-

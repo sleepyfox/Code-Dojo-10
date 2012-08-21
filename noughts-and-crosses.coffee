@@ -5,11 +5,10 @@ X = 'X'
 O = 'O'
 
 class Game 
-  # default board is empty
-  constructor: (@board = [ [EMPTY, EMPTY, EMPTY], [EMPTY, EMPTY, EMPTY], [EMPTY, EMPTY, EMPTY] ]) ->
+  constructor: (board) -> 
+    @board = board ? [ [EMPTY, EMPTY, EMPTY], [EMPTY, EMPTY, EMPTY], [EMPTY, EMPTY, EMPTY] ]
 
-  isFinished: ->
-    # no square is empty
+  isFinished: -> # no square is empty
     for row in [0..NUM_ROWS - 1]
       for column in [0..NUM_COLUMNS - 1]
         filled = filled ? true && (@board[row][column] isnt EMPTY) 
@@ -66,6 +65,12 @@ class Game
 
   isWinForX: -> 
     @isWinFor X
+
+  isValidMove: (player, x, y) ->
+    if @board[x][y] is EMPTY 
+      true
+    else 
+      false
 
 exports.Game = Game
 exports.X = X
