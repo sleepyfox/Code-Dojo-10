@@ -22,5 +22,5 @@ The source of the kata is the Noughts and Crosses Kata. The rules of Noughts and
 
 Noughts and Crosses has been around a very long time, there was a version played in ancient Rome from around the first century BC called 'Terni Lapilli' and the game's grid markings have been found scrawled all across ancient Rome's archaelogical remains.
 
-I've also linked the [slides]() from the meeting. You can find out more about the London Code Dojo at our [homepage](http://www.meetup.com/London-Code-Dojo/).
+I've also linked the [slides](https://speakerdeck.com/u/sleepyfox/p/code-dojo-10-august-2012) from the meeting. You can find out more about the London Code Dojo at our [homepage](http://www.meetup.com/London-Code-Dojo/).
 
