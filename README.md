@@ -5,7 +5,7 @@ This is my worked example from the 10th meeting of the London Code Dojo in Aug 2
     jasmine-node --coffee --verbose test-*
 
 I set up a watchr file (kata.watchr) so that the tests are run automatically every time you save a file in your editor, simply run watchr (if you have it installed) with:
-    
+
     watchr kata.watchr
 
 The source of the kata is the Noughts and Crosses Kata. The rules of Noughts and Crosses (or Tic-Tac-Toe as it is known in the USA) are as follows:
@@ -22,5 +22,7 @@ The source of the kata is the Noughts and Crosses Kata. The rules of Noughts and
 
 Noughts and Crosses has been around a very long time, there was a version played in ancient Rome from around the first century BC called 'Terni Lapilli' and the game's grid markings have been found scrawled all across ancient Rome's archaelogical remains.
 
-I've also linked the [slides](https://speakerdeck.com/u/sleepyfox/p/code-dojo-10-august-2012) from the meeting. You can find out more about the London Code Dojo at our [homepage](http://www.meetup.com/London-Code-Dojo/).
+You can find out more about the London Code Dojo at our [homepage](http://www.meetup.com/London-Code-Dojo/).
 
+# License
+The code samples are licensed under the CC-SA-NC-4.0 license, as shown in the [LICENSE](/LICENSE) file.
